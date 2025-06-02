@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1e9773e29ddb4d1cb5a3c2807c203a83" Name="Diagram1">
+        <EntityTypeShape EntityType="CoffeeDBMurtazinModel.Employees" Width="1.5" PointX="8.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoffeeDBMurtazinModel.Ingredients" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoffeeDBMurtazinModel.IngredientSupplier" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoffeeDBMurtazinModel.InventoryAlerts" Width="1.5" PointX="8.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoffeeDBMurtazinModel.InventoryTransactions" Width="1.5" PointX="10.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoffeeDBMurtazinModel.MenuCategories" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoffeeDBMurtazinModel.MenuItems" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoffeeDBMurtazinModel.OrderDetails" Width="1.5" PointX="12.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoffeeDBMurtazinModel.Orders" Width="1.5" PointX="10.5" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoffeeDBMurtazinModel.OrderStatuses" Width="1.5" PointX="8.25" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoffeeDBMurtazinModel.PositionsEmployee" Width="1.5" PointX="6" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoffeeDBMurtazinModel.Recipes" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoffeeDBMurtazinModel.Suppliers" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoffeeDBMurtazinModel.sysdiagrams" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoffeeDBMurtazinModel.TransactionType" Width="1.5" PointX="8.25" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoffeeDBMurtazinModel.TypeIngredients" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoffeeDBMurtazinModel.TypeSupplier" Width="1.5" PointX="0.75" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoffeeDBMurtazinModel.UnitOfMeasurement" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoffeeDBMurtazinModel.WorkSchedules" Width="1.5" PointX="10.5" PointY="13.125" IsExpanded="true" />
+        <AssociationConnector Association="CoffeeDBMurtazinModel.FK__Employees__Posit__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="CoffeeDBMurtazinModel.FK__WorkSched__Emplo__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="CoffeeDBMurtazinModel.FK_InventoryAlerts_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="CoffeeDBMurtazinModel.FK_InventoryTransactions_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="CoffeeDBMurtazinModel.FK_Orders_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="CoffeeDBMurtazinModel.FK__Ingredien__TypeI__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="CoffeeDBMurtazinModel.FK_Ingredients_UnitOfMeasurement" ManuallyRouted="false" />
+        <AssociationConnector Association="CoffeeDBMurtazinModel.FK_IngredientSupplier_Ingredients" ManuallyRouted="false" />
+        <AssociationConnector Association="CoffeeDBMurtazinModel.FK_InventoryAlerts_Ingredients" ManuallyRouted="false" />
+        <AssociationConnector Association="CoffeeDBMurtazinModel.FK_Recipes_Ingredients" ManuallyRouted="false" />
+        <AssociationConnector Association="CoffeeDBMurtazinModel.FK_IngredientSupplier_Suppliers" ManuallyRouted="false" />
+        <AssociationConnector Association="CoffeeDBMurtazinModel.FK_InventoryTransactions_IngredientSupplier" ManuallyRouted="false" />
+        <AssociationConnector Association="CoffeeDBMurtazinModel.FK__Inventory__Trans__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="CoffeeDBMurtazinModel.FK_MenuItems_MenuCategories" ManuallyRouted="false" />
+        <AssociationConnector Association="CoffeeDBMurtazinModel.FK_OrderDetails_MenuItems" ManuallyRouted="false" />
+        <AssociationConnector Association="CoffeeDBMurtazinModel.FK_Recipes_MenuItems" ManuallyRouted="false" />
+        <AssociationConnector Association="CoffeeDBMurtazinModel.FK_OrderDetails_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="CoffeeDBMurtazinModel.FK_Orders_OrderStatuses" ManuallyRouted="false" />
+        <AssociationConnector Association="CoffeeDBMurtazinModel.FK__Suppliers__Type__2E1BDC42" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

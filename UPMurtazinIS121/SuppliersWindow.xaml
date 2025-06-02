@@ -1,0 +1,218 @@
+﻿<Window x:Class="UPMurtazinIS121.SuppliersWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UPMurtazinIS121"
+        xmlns:locall="clr-namespace:UPMurtazinIS121.Validations"
+        xmlns:vm="clr-namespace:UPMurtazinIS121.ViewModel"
+        mc:Ignorable="d"
+        Title="Управление поставщиками - Кофейный Рай" 
+        Height="800" Width="1200"
+        WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <vm:SuppliersViewModel/>
+    </Window.DataContext>
+
+    <Grid Margin="10">
+        <TextBlock Text="УПРАВЛЕНИЕ ПОСТАВЩИКАМИ" 
+                   FontSize="24" FontWeight="Bold" 
+                   Foreground="{StaticResource AccentBrush}"
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Top"
+                   Margin="0,10"/>
+
+        <Grid Margin="0,50,0,50">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="1.2*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Левая часть - Список поставщиков -->
+            <Border Grid.Column="0"
+                    Background="{StaticResource SecondaryBackgroundBrush}"
+                    CornerRadius="5"
+                    Padding="10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Фильтр по типу -->
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBlock Text="Фильтр по типу:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                        <ComboBox ItemsSource="{Binding SupplierTypes}"
+                                  SelectedItem="{Binding SelectedFilterType}"
+                                  Width="200"
+                                  Height="35"
+                                  IsEditable="False">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <Button Content="А-Я" Command="{Binding SortAscCommand}" Width="60" Margin="0,0,5,0"/>
+                        <Button Content="Я-А" Command="{Binding SortDescCommand}" Width="60"/>
+                    </StackPanel>
+
+                    <ListView Grid.Row="1"
+                              ItemsSource="{Binding FilteredSuppliersList}"
+                              SelectedItem="{Binding SelectedSupplier}"
+                              Background="{StaticResource SecondaryBackgroundBrush}"
+                              BorderThickness="0"
+                              HorizontalContentAlignment="Stretch"
+                              ScrollViewer.CanContentScroll="False"
+                              ScrollViewer.VerticalScrollBarVisibility="Auto">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Border Background="White" CornerRadius="4" Padding="8" Margin="0,0,0,10">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="2*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <!-- Название поставщика -->
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4"
+                                                   Text="{Binding Name}"
+                                                   FontWeight="Bold" FontSize="16"
+                                                   Margin="0,0,0,8"/>
+
+                                        <!-- Первая строка: Тип и ИНН -->
+                                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Тип:" FontStyle="Italic"/>
+                                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Type}" />
+                                        <TextBlock Grid.Row="1" Grid.Column="2" Text="ИНН:" FontStyle="Italic"/>
+                                        <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding INN}" />
+
+                                        <!-- Вторая строка: ФИО и Телефон -->
+                                        <TextBlock Grid.Row="2" Grid.Column="0" Text="ФИО:" FontStyle="Italic"/>
+                                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding FIO}" />
+                                        <TextBlock Grid.Row="2" Grid.Column="2" Text="Телефон:" FontStyle="Italic"/>
+                                        <TextBlock Grid.Row="2" Grid.Column="3" Text="{Binding Phone}" />
+
+                                        <!-- Третья строка: Email и Рейтинг -->
+                                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Email:" FontStyle="Italic"/>
+                                        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Email}" />
+                                        <TextBlock Grid.Row="3" Grid.Column="2" Text="Рейтинг:" FontStyle="Italic"/>
+                                        <TextBlock Grid.Row="3" Grid.Column="3" Text="{Binding RatingReliability}" />
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </Border>
+
+            <GridSplitter Grid.Column="1" Width="6" Background="{StaticResource AccentBrush}" IsEnabled="False"/>
+
+            <!-- Правая часть - Редактирование -->
+            <Border Grid.Column="2"
+                    Background="{StaticResource SecondaryBackgroundBrush}"
+                    CornerRadius="5"
+                    Padding="15">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Область редактирования с прокруткой -->
+                    <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+                        <StackPanel>
+                            <TextBlock Text="Редактирование поставщика" 
+                                       FontSize="18" FontWeight="Bold"
+                                       HorizontalAlignment="Center"
+                                       Margin="0,0,0,15"/>
+
+                            <Label Content="Название:"/>
+                            <TextBox Text="{Binding SelectedSupplier.Name, UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <Label Content="Тип:"/>
+                            <ComboBox ItemsSource="{Binding SupplierTypes}"
+                                      SelectedItem="{Binding SelectedSupplier.Type, UpdateSourceTrigger=PropertyChanged}"
+                                      IsEditable="True" IsReadOnly="True">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+
+                            <Label Content="Юридический адрес:"/>
+                            <TextBox Text="{Binding SelectedSupplier.YuridAdres, UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <Label Content="ИНН:"/>
+                            <TextBox Text="{Binding SelectedSupplier.INN, UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <Label Content="ФИО представителя:"/>
+                            <TextBox Text="{Binding SelectedSupplier.FIO, UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <Label Content="Телефон:"/>
+                            <TextBox Text="{Binding SelectedSupplier.Phone, UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <Label Content="Email:"/>
+                            <TextBox Text="{Binding SelectedSupplier.Email, UpdateSourceTrigger=PropertyChanged}"/>
+
+                            <Label Content="Рейтинг надежности:"/>
+                            <TextBox Text="{Binding SelectedSupplier.RatingReliability, UpdateSourceTrigger=PropertyChanged}"/>
+                        </StackPanel>
+                    </ScrollViewer>
+
+                    <!-- Кнопки управления (фиксированные внизу) -->
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                        <Button Content="СОХРАНИТЬ ВСЕ" 
+                                Command="{Binding SaveCommand}"
+                                Background="#5D4037"
+                                Foreground="White"
+                                FontWeight="Bold"
+                                Margin="0,0,10,0"
+                                Padding="20,10"
+                                MinWidth="180"/>
+
+                        <Button Content="+ ДОБАВИТЬ НОВЫЙ"
+                                Command="{Binding AddNewCommand}"
+                                Background="#689F38"
+                                Foreground="White"
+                                FontWeight="Bold"
+                                Padding="20,10"
+                                MinWidth="180"/>
+
+                        <Button Content="Удалить" 
+                                Command="{Binding DeleteCommand}" 
+                                Background="#D32F2F"
+                                Foreground="White"
+                                FontWeight="Bold"
+                                Margin="10,0,0,0"
+                                Padding="20,10"
+                                MinWidth="180"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <StatusBar VerticalAlignment="Bottom" Background="{StaticResource AccentBrush}">
+            <StatusBarItem>
+                <TextBlock Text="Кофейный Рай © 2025" Foreground="{StaticResource LightTextBrush}"
+                    Margin="10"
+                    Padding="10,5"/>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Всего поставщиков: " Foreground="{StaticResource LightTextBrush}"/>
+                    <TextBlock Text="{Binding SuppliersList.Count}" Foreground="{StaticResource LightTextBrush}"/>
+                </StackPanel>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>

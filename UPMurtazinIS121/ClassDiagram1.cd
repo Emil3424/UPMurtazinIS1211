@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="INotifyPropertyChanged	">
+    <Position X="8.375" Y="0.525" Height="0.291" Width="1.7" />
+  </Comment>
+  <Class Name="UPMurtazinIS121.BoolToBrushConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BoolToBrushConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="UPMurtazinIS121.InverseBoolToBrushConverter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="1.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BoolToBrushConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="UPMurtazinIS121.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="1.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="UPMurtazinIS121.SuppliersWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SuppliersWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="UPMurtazinIS121.Model.IngredientModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAoBACgEAAAKAAAAAAAwAEAAAgAAAAAAAAAAAQ=</HashCode>
+      <FileName>Model\IngredientModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="UPMurtazinIS121.Model.SupplierModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAQFAACCAAQAAKgAAAAQAgAAIAAAAAQAAIAAAAAA=</HashCode>
+      <FileName>Model\SupplierModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="UPMurtazinIS121.ViewModel.IngredientsViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAgAAABQAAAWBEECIAABRAAIgQAQAAAAAAAAABAEAAA=</HashCode>
+      <FileName>ViewModel\IngredientsViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="UPMurtazinIS121.ViewModel.MainViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACBAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\MainViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="UPMurtazinIS121.ViewModel.SuppliersViewModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAABAAAAQFEECKACBQAAAgQAACAiABAAAAAAEAAA=</HashCode>
+      <FileName>ViewModel\SuppliersViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="UPMurtazinIS121.Validations.RelayCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQAAECAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\RelayCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="UPMurtazinIS121.Model.Employees" Collapsed="true">
+    <Position X="1.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgMAAAAAACABAAQAAAAQAAAAACIAAAAAgAAAIAAAAAA=</HashCode>
+      <FileName>Model\Employees.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPMurtazinIS121.Model.Ingredients" Collapsed="true">
+    <Position X="10.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAoBAAhEAAAIAAAIAAAQAgABAgAAAAAAAAAAAQ=</HashCode>
+      <FileName>Model\Ingredients.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPMurtazinIS121.Model.IngredientSupplier" Collapsed="true">
+    <Position X="6.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAIAAAAAQACAAAAAAAAAAACAAAgAAAAA=</HashCode>
+      <FileName>Model\IngredientSupplier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPMurtazinIS121.Model.InventoryAlerts" Collapsed="true">
+    <Position X="5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAEAAAAAAAAAIDAAGAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\InventoryAlerts.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPMurtazinIS121.Model.InventoryTransactions" Collapsed="true">
+    <Position X="10.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAIAAAIAAAAAAAAAAAAAAAAgSAgAAAEAAAAAkAAAAAA=</HashCode>
+      <FileName>Model\InventoryTransactions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPMurtazinIS121.Model.MenuCategories" Collapsed="true">
+    <Position X="5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAgABAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\MenuCategories.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPMurtazinIS121.Model.MenuItems" Collapsed="true">
+    <Position X="6.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAEAEACAQAgAAAAABABIIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\MenuItems.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPMurtazinIS121.Model.OrderDetails" Collapsed="true">
+    <Position X="8.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAABAAAAAAABAAAAABAAAAAAAAEAABAAAAgAAAAAA=</HashCode>
+      <FileName>Model\OrderDetails.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPMurtazinIS121.Model.Orders" Collapsed="true">
+    <Position X="10.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAIAABAAAAAQAAAAABAAAAAICQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Orders.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPMurtazinIS121.Model.OrderStatuses" Collapsed="true">
+    <Position X="1.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAgAAAAAAAAAAQIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\OrderStatuses.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPMurtazinIS121.Model.PositionsEmployee" Collapsed="true">
+    <Position X="3.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAACAAAAAAAgAAAIAAAAAA=</HashCode>
+      <FileName>Model\PositionsEmployee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPMurtazinIS121.Model.Recipes" Collapsed="true">
+    <Position X="3.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAABAAAAABACAAAAAIAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Model\Recipes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPMurtazinIS121.Model.Suppliers" Collapsed="true">
+    <Position X="8.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAQEAACAAAABAAgAAAAQAAAgIgAAAAQAAIAAAAAA=</HashCode>
+      <FileName>Model\Suppliers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPMurtazinIS121.Model.TransactionType" Collapsed="true">
+    <Position X="6.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\TransactionType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPMurtazinIS121.Model.TypeIngredients" Collapsed="true">
+    <Position X="3.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\TypeIngredients.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPMurtazinIS121.Model.TypeSupplier" Collapsed="true">
+    <Position X="1.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Model\TypeSupplier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPMurtazinIS121.Model.WorkSchedules" Collapsed="true">
+    <Position X="8.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAQAAAKAAgAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Model\WorkSchedules.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

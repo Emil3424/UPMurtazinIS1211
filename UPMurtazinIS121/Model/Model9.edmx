@@ -1,0 +1,1295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище CoffeeDBMurtazinModel" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FIO" Type="nvarchar" MaxLength="100" />
+          <Property Name="PositionID" Type="int" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="25" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="HireDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Ingredients">
+          <Key>
+            <PropertyRef Name="IngredientID" />
+          </Key>
+          <Property Name="IngredientsName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TypeIngredients" Type="nvarchar" MaxLength="50" />
+          <Property Name="UnitOfMeasurement" Type="nvarchar" MaxLength="5" />
+          <Property Name="KolichSklad" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="MinimKolich" Type="int" />
+          <Property Name="KolichUpakovka" Type="int" />
+          <Property Name="CostForOne" Type="int" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExpirationDate" Type="datetime" />
+          <Property Name="IngredientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IngredientSupplier">
+          <Key>
+            <PropertyRef Name="IDIngredientSupplier" />
+          </Key>
+          <Property Name="IngredientID" Type="int" Nullable="false" />
+          <Property Name="SupplierID" Type="int" Nullable="false" />
+          <Property Name="IDIngredientSupplier" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InventoryAlerts">
+          <Key>
+            <PropertyRef Name="AlertID" />
+          </Key>
+          <Property Name="AlertID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AlertDate" Type="datetime" Nullable="false" />
+          <Property Name="IsResolved" Type="bit" Nullable="false" />
+          <Property Name="ResolvedBy" Type="int" />
+          <Property Name="ResolvedDate" Type="datetime" />
+          <Property Name="IngredientID" Type="int" />
+        </EntityType>
+        <EntityType Name="InventoryTransactions">
+          <Key>
+            <PropertyRef Name="TransactionID" />
+          </Key>
+          <Property Name="TransactionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TransactionDate" Type="datetime" Nullable="false" />
+          <Property Name="Quantity" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="TransactionType" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="ExpirationDate" Type="date" />
+          <Property Name="IDSIngredienupplier" Type="int" />
+        </EntityType>
+        <EntityType Name="MenuCategories">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="MenuItems">
+          <Key>
+            <PropertyRef Name="MenuItemID" />
+          </Key>
+          <Property Name="MenuItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="ItemName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="ImagePath" Type="nvarchar" MaxLength="255" />
+          <Property Name="Price" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Calories" Type="int" />
+        </EntityType>
+        <EntityType Name="OrderDetails">
+          <Key>
+            <PropertyRef Name="OrderDetailID" />
+          </Key>
+          <Property Name="OrderDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderID" Type="int" Nullable="false" />
+          <Property Name="MenuItemID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="PriceOfOrder" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderDate" Type="datetime" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="StatusID" Type="int" Nullable="false" />
+          <Property Name="TotalAmount" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderStatuses">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="PositionsEmployee">
+          <Key>
+            <PropertyRef Name="PositionID" />
+          </Key>
+          <Property Name="PositionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PositionName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Recipes">
+          <Key>
+            <PropertyRef Name="RecipeID" />
+          </Key>
+          <Property Name="RecipeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuItemID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Instructions" Type="nvarchar" MaxLength="500" />
+          <Property Name="IngredientID" Type="int" />
+        </EntityType>
+        <EntityType Name="Suppliers">
+          <Key>
+            <PropertyRef Name="IDSuppliers" />
+          </Key>
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="25" />
+          <Property Name="YuridAdres" Type="nvarchar" MaxLength="100" />
+          <Property Name="INN" Type="float" />
+          <Property Name="FIO" Type="nvarchar" MaxLength="100" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="25" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Logo" Type="nvarchar" MaxLength="100" />
+          <Property Name="RatingReliability" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="IDSuppliers" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TransactionType">
+          <Key>
+            <PropertyRef Name="TransactionType" />
+          </Key>
+          <Property Name="TransactionType" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeIngredients">
+          <Key>
+            <PropertyRef Name="TypeIngredients" />
+          </Key>
+          <Property Name="TypeIngredients" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeSupplier">
+          <Key>
+            <PropertyRef Name="Type" />
+          </Key>
+          <Property Name="Type" Type="nvarchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UnitOfMeasurement">
+          <Key>
+            <PropertyRef Name="UnitOfMeasurement" />
+          </Key>
+          <Property Name="UnitOfMeasurement" Type="nvarchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WorkSchedules">
+          <Key>
+            <PropertyRef Name="ScheduleID" />
+          </Key>
+          <Property Name="ScheduleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="WorkDate" Type="date" />
+          <Property Name="StartTime" Type="time" Precision="7" />
+          <Property Name="EndTime" Type="time" Precision="7" />
+        </EntityType>
+        <Association Name="FK__Employees__Posit__412EB0B6">
+          <End Role="PositionsEmployee" Type="Self.PositionsEmployee" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PositionsEmployee">
+              <PropertyRef Name="PositionID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="PositionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ingredien__TypeI__286302EC">
+          <End Role="TypeIngredients" Type="Self.TypeIngredients" Multiplicity="0..1" />
+          <End Role="Ingredients" Type="Self.Ingredients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeIngredients">
+              <PropertyRef Name="TypeIngredients" />
+            </Principal>
+            <Dependent Role="Ingredients">
+              <PropertyRef Name="TypeIngredients" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inventory__Trans__5DCAEF64">
+          <End Role="TransactionType" Type="Self.TransactionType" Multiplicity="1" />
+          <End Role="InventoryTransactions" Type="Self.InventoryTransactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransactionType">
+              <PropertyRef Name="TransactionType" />
+            </Principal>
+            <Dependent Role="InventoryTransactions">
+              <PropertyRef Name="TransactionType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Suppliers__Type__2E1BDC42">
+          <End Role="TypeSupplier" Type="Self.TypeSupplier" Multiplicity="0..1" />
+          <End Role="Suppliers" Type="Self.Suppliers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeSupplier">
+              <PropertyRef Name="Type" />
+            </Principal>
+            <Dependent Role="Suppliers">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WorkSched__Emplo__46E78A0C">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="WorkSchedules" Type="Self.WorkSchedules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="WorkSchedules">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ingredients_UnitOfMeasurement">
+          <End Role="UnitOfMeasurement" Type="Self.UnitOfMeasurement" Multiplicity="0..1" />
+          <End Role="Ingredients" Type="Self.Ingredients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitOfMeasurement">
+              <PropertyRef Name="UnitOfMeasurement" />
+            </Principal>
+            <Dependent Role="Ingredients">
+              <PropertyRef Name="UnitOfMeasurement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IngredientSupplier_Ingredients">
+          <End Role="Ingredients" Type="Self.Ingredients" Multiplicity="1" />
+          <End Role="IngredientSupplier" Type="Self.IngredientSupplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingredients">
+              <PropertyRef Name="IngredientID" />
+            </Principal>
+            <Dependent Role="IngredientSupplier">
+              <PropertyRef Name="IngredientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IngredientSupplier_Suppliers">
+          <End Role="Suppliers" Type="Self.Suppliers" Multiplicity="1" />
+          <End Role="IngredientSupplier" Type="Self.IngredientSupplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suppliers">
+              <PropertyRef Name="IDSuppliers" />
+            </Principal>
+            <Dependent Role="IngredientSupplier">
+              <PropertyRef Name="SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InventoryAlerts_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+          <End Role="InventoryAlerts" Type="Self.InventoryAlerts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="InventoryAlerts">
+              <PropertyRef Name="ResolvedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InventoryAlerts_Ingredients">
+          <End Role="Ingredients" Type="Self.Ingredients" Multiplicity="0..1" />
+          <End Role="InventoryAlerts" Type="Self.InventoryAlerts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingredients">
+              <PropertyRef Name="IngredientID" />
+            </Principal>
+            <Dependent Role="InventoryAlerts">
+              <PropertyRef Name="IngredientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InventoryTransactions_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="InventoryTransactions" Type="Self.InventoryTransactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="InventoryTransactions">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InventoryTransactions_IngredientSupplier">
+          <End Role="IngredientSupplier" Type="Self.IngredientSupplier" Multiplicity="0..1" />
+          <End Role="InventoryTransactions" Type="Self.InventoryTransactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IngredientSupplier">
+              <PropertyRef Name="IDIngredientSupplier" />
+            </Principal>
+            <Dependent Role="InventoryTransactions">
+              <PropertyRef Name="IDSIngredienupplier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuItems_MenuCategories">
+          <End Role="MenuCategories" Type="Self.MenuCategories" Multiplicity="1" />
+          <End Role="MenuItems" Type="Self.MenuItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuCategories">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="MenuItems">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetails_MenuItems">
+          <End Role="MenuItems" Type="Self.MenuItems" Multiplicity="1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuItems">
+              <PropertyRef Name="MenuItemID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="MenuItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetails_Orders">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_OrderStatuses">
+          <End Role="OrderStatuses" Type="Self.OrderStatuses" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderStatuses">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recipes_Ingredients">
+          <End Role="Ingredients" Type="Self.Ingredients" Multiplicity="0..1" />
+          <End Role="Recipes" Type="Self.Recipes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingredients">
+              <PropertyRef Name="IngredientID" />
+            </Principal>
+            <Dependent Role="Recipes">
+              <PropertyRef Name="IngredientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recipes_MenuItems">
+          <End Role="MenuItems" Type="Self.MenuItems" Multiplicity="1" />
+          <End Role="Recipes" Type="Self.Recipes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuItems">
+              <PropertyRef Name="MenuItemID" />
+            </Principal>
+            <Dependent Role="Recipes">
+              <PropertyRef Name="MenuItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище CoffeeDBMurtazinModelContainer">
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ingredients" EntityType="Self.Ingredients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IngredientSupplier" EntityType="Self.IngredientSupplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InventoryAlerts" EntityType="Self.InventoryAlerts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InventoryTransactions" EntityType="Self.InventoryTransactions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenuCategories" EntityType="Self.MenuCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenuItems" EntityType="Self.MenuItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderStatuses" EntityType="Self.OrderStatuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PositionsEmployee" EntityType="Self.PositionsEmployee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Recipes" EntityType="Self.Recipes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Suppliers" EntityType="Self.Suppliers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransactionType" EntityType="Self.TransactionType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeIngredients" EntityType="Self.TypeIngredients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeSupplier" EntityType="Self.TypeSupplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnitOfMeasurement" EntityType="Self.UnitOfMeasurement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkSchedules" EntityType="Self.WorkSchedules" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Employees__Posit__412EB0B6" Association="Self.FK__Employees__Posit__412EB0B6">
+            <End Role="PositionsEmployee" EntitySet="PositionsEmployee" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ingredien__TypeI__286302EC" Association="Self.FK__Ingredien__TypeI__286302EC">
+            <End Role="TypeIngredients" EntitySet="TypeIngredients" />
+            <End Role="Ingredients" EntitySet="Ingredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inventory__Trans__5DCAEF64" Association="Self.FK__Inventory__Trans__5DCAEF64">
+            <End Role="TransactionType" EntitySet="TransactionType" />
+            <End Role="InventoryTransactions" EntitySet="InventoryTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Suppliers__Type__2E1BDC42" Association="Self.FK__Suppliers__Type__2E1BDC42">
+            <End Role="TypeSupplier" EntitySet="TypeSupplier" />
+            <End Role="Suppliers" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WorkSched__Emplo__46E78A0C" Association="Self.FK__WorkSched__Emplo__46E78A0C">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="WorkSchedules" EntitySet="WorkSchedules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ingredients_UnitOfMeasurement" Association="Self.FK_Ingredients_UnitOfMeasurement">
+            <End Role="UnitOfMeasurement" EntitySet="UnitOfMeasurement" />
+            <End Role="Ingredients" EntitySet="Ingredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IngredientSupplier_Ingredients" Association="Self.FK_IngredientSupplier_Ingredients">
+            <End Role="Ingredients" EntitySet="Ingredients" />
+            <End Role="IngredientSupplier" EntitySet="IngredientSupplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IngredientSupplier_Suppliers" Association="Self.FK_IngredientSupplier_Suppliers">
+            <End Role="Suppliers" EntitySet="Suppliers" />
+            <End Role="IngredientSupplier" EntitySet="IngredientSupplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InventoryAlerts_Employees" Association="Self.FK_InventoryAlerts_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="InventoryAlerts" EntitySet="InventoryAlerts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InventoryAlerts_Ingredients" Association="Self.FK_InventoryAlerts_Ingredients">
+            <End Role="Ingredients" EntitySet="Ingredients" />
+            <End Role="InventoryAlerts" EntitySet="InventoryAlerts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InventoryTransactions_Employees" Association="Self.FK_InventoryTransactions_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="InventoryTransactions" EntitySet="InventoryTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InventoryTransactions_IngredientSupplier" Association="Self.FK_InventoryTransactions_IngredientSupplier">
+            <End Role="IngredientSupplier" EntitySet="IngredientSupplier" />
+            <End Role="InventoryTransactions" EntitySet="InventoryTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuItems_MenuCategories" Association="Self.FK_MenuItems_MenuCategories">
+            <End Role="MenuCategories" EntitySet="MenuCategories" />
+            <End Role="MenuItems" EntitySet="MenuItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_MenuItems" Association="Self.FK_OrderDetails_MenuItems">
+            <End Role="MenuItems" EntitySet="MenuItems" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_Orders" Association="Self.FK_OrderDetails_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Employees" Association="Self.FK_Orders_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_OrderStatuses" Association="Self.FK_Orders_OrderStatuses">
+            <End Role="OrderStatuses" EntitySet="OrderStatuses" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recipes_Ingredients" Association="Self.FK_Recipes_Ingredients">
+            <End Role="Ingredients" EntitySet="Ingredients" />
+            <End Role="Recipes" EntitySet="Recipes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recipes_MenuItems" Association="Self.FK_Recipes_MenuItems">
+            <End Role="MenuItems" EntitySet="MenuItems" />
+            <End Role="Recipes" EntitySet="Recipes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CoffeeDBMurtazinModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FIO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PositionID" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="HireDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="PositionsEmployee" Relationship="Self.FK__Employees__Posit__412EB0B6" FromRole="Employees" ToRole="PositionsEmployee" />
+          <NavigationProperty Name="WorkSchedules" Relationship="Self.FK__WorkSched__Emplo__46E78A0C" FromRole="Employees" ToRole="WorkSchedules" />
+          <NavigationProperty Name="InventoryAlerts" Relationship="Self.FK_InventoryAlerts_Employees" FromRole="Employees" ToRole="InventoryAlerts" />
+          <NavigationProperty Name="InventoryTransactions" Relationship="Self.FK_InventoryTransactions_Employees" FromRole="Employees" ToRole="InventoryTransactions" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Employees" FromRole="Employees" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Ingredients">
+          <Key>
+            <PropertyRef Name="IngredientID" />
+          </Key>
+          <Property Name="IngredientsName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeIngredients" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UnitOfMeasurement" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="KolichSklad" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MinimKolich" Type="Int32" />
+          <Property Name="KolichUpakovka" Type="Int32" />
+          <Property Name="CostForOne" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ExpirationDate" Type="DateTime" Precision="3" />
+          <Property Name="IngredientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="TypeIngredients1" Relationship="Self.FK__Ingredien__TypeI__286302EC" FromRole="Ingredients" ToRole="TypeIngredients" />
+          <NavigationProperty Name="UnitOfMeasurement1" Relationship="Self.FK_Ingredients_UnitOfMeasurement" FromRole="Ingredients" ToRole="UnitOfMeasurement" />
+          <NavigationProperty Name="IngredientSupplier" Relationship="Self.FK_IngredientSupplier_Ingredients" FromRole="Ingredients" ToRole="IngredientSupplier" />
+          <NavigationProperty Name="InventoryAlerts" Relationship="Self.FK_InventoryAlerts_Ingredients" FromRole="Ingredients" ToRole="InventoryAlerts" />
+          <NavigationProperty Name="Recipes" Relationship="Self.FK_Recipes_Ingredients" FromRole="Ingredients" ToRole="Recipes" />
+        </EntityType>
+        <EntityType Name="IngredientSupplier">
+          <Key>
+            <PropertyRef Name="IDIngredientSupplier" />
+          </Key>
+          <Property Name="IngredientID" Type="Int32" Nullable="false" />
+          <Property Name="SupplierID" Type="Int32" Nullable="false" />
+          <Property Name="IDIngredientSupplier" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Ingredients" Relationship="Self.FK_IngredientSupplier_Ingredients" FromRole="IngredientSupplier" ToRole="Ingredients" />
+          <NavigationProperty Name="Suppliers" Relationship="Self.FK_IngredientSupplier_Suppliers" FromRole="IngredientSupplier" ToRole="Suppliers" />
+          <NavigationProperty Name="InventoryTransactions" Relationship="Self.FK_InventoryTransactions_IngredientSupplier" FromRole="IngredientSupplier" ToRole="InventoryTransactions" />
+        </EntityType>
+        <EntityType Name="InventoryAlerts">
+          <Key>
+            <PropertyRef Name="AlertID" />
+          </Key>
+          <Property Name="AlertID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AlertDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsResolved" Type="Boolean" Nullable="false" />
+          <Property Name="ResolvedBy" Type="Int32" />
+          <Property Name="ResolvedDate" Type="DateTime" Precision="3" />
+          <Property Name="IngredientID" Type="Int32" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_InventoryAlerts_Employees" FromRole="InventoryAlerts" ToRole="Employees" />
+          <NavigationProperty Name="Ingredients" Relationship="Self.FK_InventoryAlerts_Ingredients" FromRole="InventoryAlerts" ToRole="Ingredients" />
+        </EntityType>
+        <EntityType Name="InventoryTransactions">
+          <Key>
+            <PropertyRef Name="TransactionID" />
+          </Key>
+          <Property Name="TransactionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Quantity" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="TransactionType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="ExpirationDate" Type="DateTime" Precision="0" />
+          <Property Name="IDSIngredienupplier" Type="Int32" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_InventoryTransactions_Employees" FromRole="InventoryTransactions" ToRole="Employees" />
+          <NavigationProperty Name="IngredientSupplier" Relationship="Self.FK_InventoryTransactions_IngredientSupplier" FromRole="InventoryTransactions" ToRole="IngredientSupplier" />
+          <NavigationProperty Name="TransactionType1" Relationship="Self.FK__Inventory__Trans__5DCAEF64" FromRole="InventoryTransactions" ToRole="TransactionType" />
+        </EntityType>
+        <EntityType Name="MenuCategories">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MenuItems" Relationship="Self.FK_MenuItems_MenuCategories" FromRole="MenuCategories" ToRole="MenuItems" />
+        </EntityType>
+        <EntityType Name="MenuItems">
+          <Key>
+            <PropertyRef Name="MenuItemID" />
+          </Key>
+          <Property Name="MenuItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="ItemName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ImagePath" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Calories" Type="Int32" />
+          <NavigationProperty Name="MenuCategories" Relationship="Self.FK_MenuItems_MenuCategories" FromRole="MenuItems" ToRole="MenuCategories" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_MenuItems" FromRole="MenuItems" ToRole="OrderDetails" />
+          <NavigationProperty Name="Recipes" Relationship="Self.FK_Recipes_MenuItems" FromRole="MenuItems" ToRole="Recipes" />
+        </EntityType>
+        <EntityType Name="OrderDetails">
+          <Key>
+            <PropertyRef Name="OrderDetailID" />
+          </Key>
+          <Property Name="OrderDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+          <Property Name="MenuItemID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="PriceOfOrder" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="MenuItems" Relationship="Self.FK_OrderDetails_MenuItems" FromRole="OrderDetails" ToRole="MenuItems" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_OrderDetails_Orders" FromRole="OrderDetails" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="StatusID" Type="Int32" Nullable="false" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Orders_Employees" FromRole="Orders" ToRole="Employees" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_Orders" FromRole="Orders" ToRole="OrderDetails" />
+          <NavigationProperty Name="OrderStatuses" Relationship="Self.FK_Orders_OrderStatuses" FromRole="Orders" ToRole="OrderStatuses" />
+        </EntityType>
+        <EntityType Name="OrderStatuses">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_OrderStatuses" FromRole="OrderStatuses" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="PositionsEmployee">
+          <Key>
+            <PropertyRef Name="PositionID" />
+          </Key>
+          <Property Name="PositionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PositionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Employees__Posit__412EB0B6" FromRole="PositionsEmployee" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="Recipes">
+          <Key>
+            <PropertyRef Name="RecipeID" />
+          </Key>
+          <Property Name="RecipeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuItemID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Instructions" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IngredientID" Type="Int32" />
+          <NavigationProperty Name="Ingredients" Relationship="Self.FK_Recipes_Ingredients" FromRole="Recipes" ToRole="Ingredients" />
+          <NavigationProperty Name="MenuItems" Relationship="Self.FK_Recipes_MenuItems" FromRole="Recipes" ToRole="MenuItems" />
+        </EntityType>
+        <EntityType Name="Suppliers">
+          <Key>
+            <PropertyRef Name="IDSuppliers" />
+          </Key>
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="YuridAdres" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="INN" Type="Double" />
+          <Property Name="FIO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Logo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RatingReliability" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IDSuppliers" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="IngredientSupplier" Relationship="Self.FK_IngredientSupplier_Suppliers" FromRole="Suppliers" ToRole="IngredientSupplier" />
+          <NavigationProperty Name="TypeSupplier" Relationship="Self.FK__Suppliers__Type__2E1BDC42" FromRole="Suppliers" ToRole="TypeSupplier" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TransactionType">
+          <Key>
+            <PropertyRef Name="TransactionType1" />
+          </Key>
+          <Property Name="TransactionType1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="InventoryTransactions" Relationship="Self.FK__Inventory__Trans__5DCAEF64" FromRole="TransactionType" ToRole="InventoryTransactions" />
+        </EntityType>
+        <EntityType Name="TypeIngredients">
+          <Key>
+            <PropertyRef Name="TypeIngredients1" />
+          </Key>
+          <Property Name="TypeIngredients1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Ingredients" Relationship="Self.FK__Ingredien__TypeI__286302EC" FromRole="TypeIngredients" ToRole="Ingredients" />
+        </EntityType>
+        <EntityType Name="TypeSupplier">
+          <Key>
+            <PropertyRef Name="Type" />
+          </Key>
+          <Property Name="Type" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Suppliers" Relationship="Self.FK__Suppliers__Type__2E1BDC42" FromRole="TypeSupplier" ToRole="Suppliers" />
+        </EntityType>
+        <EntityType Name="UnitOfMeasurement">
+          <Key>
+            <PropertyRef Name="UnitOfMeasurement1" />
+          </Key>
+          <Property Name="UnitOfMeasurement1" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Ingredients" Relationship="Self.FK_Ingredients_UnitOfMeasurement" FromRole="UnitOfMeasurement" ToRole="Ingredients" />
+        </EntityType>
+        <EntityType Name="WorkSchedules">
+          <Key>
+            <PropertyRef Name="ScheduleID" />
+          </Key>
+          <Property Name="ScheduleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="WorkDate" Type="DateTime" Precision="0" />
+          <Property Name="StartTime" Type="Time" Precision="7" />
+          <Property Name="EndTime" Type="Time" Precision="7" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__WorkSched__Emplo__46E78A0C" FromRole="WorkSchedules" ToRole="Employees" />
+        </EntityType>
+        <Association Name="FK__Employees__Posit__412EB0B6">
+          <End Role="PositionsEmployee" Type="Self.PositionsEmployee" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PositionsEmployee">
+              <PropertyRef Name="PositionID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="PositionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WorkSched__Emplo__46E78A0C">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="WorkSchedules" Type="Self.WorkSchedules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="WorkSchedules">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InventoryAlerts_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+          <End Role="InventoryAlerts" Type="Self.InventoryAlerts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="InventoryAlerts">
+              <PropertyRef Name="ResolvedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InventoryTransactions_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="InventoryTransactions" Type="Self.InventoryTransactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="InventoryTransactions">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ingredien__TypeI__286302EC">
+          <End Role="TypeIngredients" Type="Self.TypeIngredients" Multiplicity="0..1" />
+          <End Role="Ingredients" Type="Self.Ingredients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeIngredients">
+              <PropertyRef Name="TypeIngredients1" />
+            </Principal>
+            <Dependent Role="Ingredients">
+              <PropertyRef Name="TypeIngredients" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ingredients_UnitOfMeasurement">
+          <End Role="UnitOfMeasurement" Type="Self.UnitOfMeasurement" Multiplicity="0..1" />
+          <End Role="Ingredients" Type="Self.Ingredients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitOfMeasurement">
+              <PropertyRef Name="UnitOfMeasurement1" />
+            </Principal>
+            <Dependent Role="Ingredients">
+              <PropertyRef Name="UnitOfMeasurement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IngredientSupplier_Ingredients">
+          <End Role="Ingredients" Type="Self.Ingredients" Multiplicity="1" />
+          <End Role="IngredientSupplier" Type="Self.IngredientSupplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingredients">
+              <PropertyRef Name="IngredientID" />
+            </Principal>
+            <Dependent Role="IngredientSupplier">
+              <PropertyRef Name="IngredientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InventoryAlerts_Ingredients">
+          <End Role="Ingredients" Type="Self.Ingredients" Multiplicity="0..1" />
+          <End Role="InventoryAlerts" Type="Self.InventoryAlerts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingredients">
+              <PropertyRef Name="IngredientID" />
+            </Principal>
+            <Dependent Role="InventoryAlerts">
+              <PropertyRef Name="IngredientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recipes_Ingredients">
+          <End Role="Ingredients" Type="Self.Ingredients" Multiplicity="0..1" />
+          <End Role="Recipes" Type="Self.Recipes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingredients">
+              <PropertyRef Name="IngredientID" />
+            </Principal>
+            <Dependent Role="Recipes">
+              <PropertyRef Name="IngredientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IngredientSupplier_Suppliers">
+          <End Role="Suppliers" Type="Self.Suppliers" Multiplicity="1" />
+          <End Role="IngredientSupplier" Type="Self.IngredientSupplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suppliers">
+              <PropertyRef Name="IDSuppliers" />
+            </Principal>
+            <Dependent Role="IngredientSupplier">
+              <PropertyRef Name="SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InventoryTransactions_IngredientSupplier">
+          <End Role="IngredientSupplier" Type="Self.IngredientSupplier" Multiplicity="0..1" />
+          <End Role="InventoryTransactions" Type="Self.InventoryTransactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IngredientSupplier">
+              <PropertyRef Name="IDIngredientSupplier" />
+            </Principal>
+            <Dependent Role="InventoryTransactions">
+              <PropertyRef Name="IDSIngredienupplier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Inventory__Trans__5DCAEF64">
+          <End Role="TransactionType" Type="Self.TransactionType" Multiplicity="1" />
+          <End Role="InventoryTransactions" Type="Self.InventoryTransactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransactionType">
+              <PropertyRef Name="TransactionType1" />
+            </Principal>
+            <Dependent Role="InventoryTransactions">
+              <PropertyRef Name="TransactionType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuItems_MenuCategories">
+          <End Role="MenuCategories" Type="Self.MenuCategories" Multiplicity="1" />
+          <End Role="MenuItems" Type="Self.MenuItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuCategories">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="MenuItems">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetails_MenuItems">
+          <End Role="MenuItems" Type="Self.MenuItems" Multiplicity="1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuItems">
+              <PropertyRef Name="MenuItemID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="MenuItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recipes_MenuItems">
+          <End Role="MenuItems" Type="Self.MenuItems" Multiplicity="1" />
+          <End Role="Recipes" Type="Self.Recipes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuItems">
+              <PropertyRef Name="MenuItemID" />
+            </Principal>
+            <Dependent Role="Recipes">
+              <PropertyRef Name="MenuItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetails_Orders">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_OrderStatuses">
+          <End Role="OrderStatuses" Type="Self.OrderStatuses" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderStatuses">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Suppliers__Type__2E1BDC42">
+          <End Role="TypeSupplier" Type="Self.TypeSupplier" Multiplicity="0..1" />
+          <End Role="Suppliers" Type="Self.Suppliers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeSupplier">
+              <PropertyRef Name="Type" />
+            </Principal>
+            <Dependent Role="Suppliers">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CoffeeDBMurtazinEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Employees" EntityType="Self.Employees" />
+          <EntitySet Name="Ingredients" EntityType="Self.Ingredients" />
+          <EntitySet Name="IngredientSupplier" EntityType="Self.IngredientSupplier" />
+          <EntitySet Name="InventoryAlerts" EntityType="Self.InventoryAlerts" />
+          <EntitySet Name="InventoryTransactions" EntityType="Self.InventoryTransactions" />
+          <EntitySet Name="MenuCategories" EntityType="Self.MenuCategories" />
+          <EntitySet Name="MenuItems" EntityType="Self.MenuItems" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" />
+          <EntitySet Name="OrderStatuses" EntityType="Self.OrderStatuses" />
+          <EntitySet Name="PositionsEmployee" EntityType="Self.PositionsEmployee" />
+          <EntitySet Name="Recipes" EntityType="Self.Recipes" />
+          <EntitySet Name="Suppliers" EntityType="Self.Suppliers" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TransactionType" EntityType="Self.TransactionType" />
+          <EntitySet Name="TypeIngredients" EntityType="Self.TypeIngredients" />
+          <EntitySet Name="TypeSupplier" EntityType="Self.TypeSupplier" />
+          <EntitySet Name="UnitOfMeasurement" EntityType="Self.UnitOfMeasurement" />
+          <EntitySet Name="WorkSchedules" EntityType="Self.WorkSchedules" />
+          <AssociationSet Name="FK__Employees__Posit__412EB0B6" Association="Self.FK__Employees__Posit__412EB0B6">
+            <End Role="PositionsEmployee" EntitySet="PositionsEmployee" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WorkSched__Emplo__46E78A0C" Association="Self.FK__WorkSched__Emplo__46E78A0C">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="WorkSchedules" EntitySet="WorkSchedules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InventoryAlerts_Employees" Association="Self.FK_InventoryAlerts_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="InventoryAlerts" EntitySet="InventoryAlerts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InventoryTransactions_Employees" Association="Self.FK_InventoryTransactions_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="InventoryTransactions" EntitySet="InventoryTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Employees" Association="Self.FK_Orders_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ingredien__TypeI__286302EC" Association="Self.FK__Ingredien__TypeI__286302EC">
+            <End Role="TypeIngredients" EntitySet="TypeIngredients" />
+            <End Role="Ingredients" EntitySet="Ingredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ingredients_UnitOfMeasurement" Association="Self.FK_Ingredients_UnitOfMeasurement">
+            <End Role="UnitOfMeasurement" EntitySet="UnitOfMeasurement" />
+            <End Role="Ingredients" EntitySet="Ingredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IngredientSupplier_Ingredients" Association="Self.FK_IngredientSupplier_Ingredients">
+            <End Role="Ingredients" EntitySet="Ingredients" />
+            <End Role="IngredientSupplier" EntitySet="IngredientSupplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InventoryAlerts_Ingredients" Association="Self.FK_InventoryAlerts_Ingredients">
+            <End Role="Ingredients" EntitySet="Ingredients" />
+            <End Role="InventoryAlerts" EntitySet="InventoryAlerts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recipes_Ingredients" Association="Self.FK_Recipes_Ingredients">
+            <End Role="Ingredients" EntitySet="Ingredients" />
+            <End Role="Recipes" EntitySet="Recipes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IngredientSupplier_Suppliers" Association="Self.FK_IngredientSupplier_Suppliers">
+            <End Role="Suppliers" EntitySet="Suppliers" />
+            <End Role="IngredientSupplier" EntitySet="IngredientSupplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InventoryTransactions_IngredientSupplier" Association="Self.FK_InventoryTransactions_IngredientSupplier">
+            <End Role="IngredientSupplier" EntitySet="IngredientSupplier" />
+            <End Role="InventoryTransactions" EntitySet="InventoryTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Inventory__Trans__5DCAEF64" Association="Self.FK__Inventory__Trans__5DCAEF64">
+            <End Role="TransactionType" EntitySet="TransactionType" />
+            <End Role="InventoryTransactions" EntitySet="InventoryTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuItems_MenuCategories" Association="Self.FK_MenuItems_MenuCategories">
+            <End Role="MenuCategories" EntitySet="MenuCategories" />
+            <End Role="MenuItems" EntitySet="MenuItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_MenuItems" Association="Self.FK_OrderDetails_MenuItems">
+            <End Role="MenuItems" EntitySet="MenuItems" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recipes_MenuItems" Association="Self.FK_Recipes_MenuItems">
+            <End Role="MenuItems" EntitySet="MenuItems" />
+            <End Role="Recipes" EntitySet="Recipes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetails_Orders" Association="Self.FK_OrderDetails_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_OrderStatuses" Association="Self.FK_Orders_OrderStatuses">
+            <End Role="OrderStatuses" EntitySet="OrderStatuses" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Suppliers__Type__2E1BDC42" Association="Self.FK__Suppliers__Type__2E1BDC42">
+            <End Role="TypeSupplier" EntitySet="TypeSupplier" />
+            <End Role="Suppliers" EntitySet="Suppliers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище CoffeeDBMurtazinModelContainer" CdmEntityContainer="CoffeeDBMurtazinEntities2">
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="CoffeeDBMurtazinModel.Employees">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ingredients">
+            <EntityTypeMapping TypeName="CoffeeDBMurtazinModel.Ingredients">
+              <MappingFragment StoreEntitySet="Ingredients">
+                <ScalarProperty Name="IngredientsName" ColumnName="IngredientsName" />
+                <ScalarProperty Name="TypeIngredients" ColumnName="TypeIngredients" />
+                <ScalarProperty Name="UnitOfMeasurement" ColumnName="UnitOfMeasurement" />
+                <ScalarProperty Name="KolichSklad" ColumnName="KolichSklad" />
+                <ScalarProperty Name="MinimKolich" ColumnName="MinimKolich" />
+                <ScalarProperty Name="KolichUpakovka" ColumnName="KolichUpakovka" />
+                <ScalarProperty Name="CostForOne" ColumnName="CostForOne" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+                <ScalarProperty Name="IngredientID" ColumnName="IngredientID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IngredientSupplier">
+            <EntityTypeMapping TypeName="CoffeeDBMurtazinModel.IngredientSupplier">
+              <MappingFragment StoreEntitySet="IngredientSupplier">
+                <ScalarProperty Name="IngredientID" ColumnName="IngredientID" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="IDIngredientSupplier" ColumnName="IDIngredientSupplier" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InventoryAlerts">
+            <EntityTypeMapping TypeName="CoffeeDBMurtazinModel.InventoryAlerts">
+              <MappingFragment StoreEntitySet="InventoryAlerts">
+                <ScalarProperty Name="AlertID" ColumnName="AlertID" />
+                <ScalarProperty Name="AlertDate" ColumnName="AlertDate" />
+                <ScalarProperty Name="IsResolved" ColumnName="IsResolved" />
+                <ScalarProperty Name="ResolvedBy" ColumnName="ResolvedBy" />
+                <ScalarProperty Name="ResolvedDate" ColumnName="ResolvedDate" />
+                <ScalarProperty Name="IngredientID" ColumnName="IngredientID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InventoryTransactions">
+            <EntityTypeMapping TypeName="CoffeeDBMurtazinModel.InventoryTransactions">
+              <MappingFragment StoreEntitySet="InventoryTransactions">
+                <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+                <ScalarProperty Name="IDSIngredienupplier" ColumnName="IDSIngredienupplier" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuCategories">
+            <EntityTypeMapping TypeName="CoffeeDBMurtazinModel.MenuCategories">
+              <MappingFragment StoreEntitySet="MenuCategories">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuItems">
+            <EntityTypeMapping TypeName="CoffeeDBMurtazinModel.MenuItems">
+              <MappingFragment StoreEntitySet="MenuItems">
+                <ScalarProperty Name="MenuItemID" ColumnName="MenuItemID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Calories" ColumnName="Calories" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="CoffeeDBMurtazinModel.OrderDetails">
+              <MappingFragment StoreEntitySet="OrderDetails">
+                <ScalarProperty Name="OrderDetailID" ColumnName="OrderDetailID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="MenuItemID" ColumnName="MenuItemID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="PriceOfOrder" ColumnName="PriceOfOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="CoffeeDBMurtazinModel.Orders">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderStatuses">
+            <EntityTypeMapping TypeName="CoffeeDBMurtazinModel.OrderStatuses">
+              <MappingFragment StoreEntitySet="OrderStatuses">
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PositionsEmployee">
+            <EntityTypeMapping TypeName="CoffeeDBMurtazinModel.PositionsEmployee">
+              <MappingFragment StoreEntitySet="PositionsEmployee">
+                <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recipes">
+            <EntityTypeMapping TypeName="CoffeeDBMurtazinModel.Recipes">
+              <MappingFragment StoreEntitySet="Recipes">
+                <ScalarProperty Name="RecipeID" ColumnName="RecipeID" />
+                <ScalarProperty Name="MenuItemID" ColumnName="MenuItemID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Instructions" ColumnName="Instructions" />
+                <ScalarProperty Name="IngredientID" ColumnName="IngredientID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="CoffeeDBMurtazinModel.Suppliers">
+              <MappingFragment StoreEntitySet="Suppliers">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="YuridAdres" ColumnName="YuridAdres" />
+                <ScalarProperty Name="INN" ColumnName="INN" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="RatingReliability" ColumnName="RatingReliability" />
+                <ScalarProperty Name="IDSuppliers" ColumnName="IDSuppliers" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CoffeeDBMurtazinModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransactionType">
+            <EntityTypeMapping TypeName="CoffeeDBMurtazinModel.TransactionType">
+              <MappingFragment StoreEntitySet="TransactionType">
+                <ScalarProperty Name="TransactionType1" ColumnName="TransactionType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeIngredients">
+            <EntityTypeMapping TypeName="CoffeeDBMurtazinModel.TypeIngredients">
+              <MappingFragment StoreEntitySet="TypeIngredients">
+                <ScalarProperty Name="TypeIngredients1" ColumnName="TypeIngredients" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeSupplier">
+            <EntityTypeMapping TypeName="CoffeeDBMurtazinModel.TypeSupplier">
+              <MappingFragment StoreEntitySet="TypeSupplier">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnitOfMeasurement">
+            <EntityTypeMapping TypeName="CoffeeDBMurtazinModel.UnitOfMeasurement">
+              <MappingFragment StoreEntitySet="UnitOfMeasurement">
+                <ScalarProperty Name="UnitOfMeasurement1" ColumnName="UnitOfMeasurement" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkSchedules">
+            <EntityTypeMapping TypeName="CoffeeDBMurtazinModel.WorkSchedules">
+              <MappingFragment StoreEntitySet="WorkSchedules">
+                <ScalarProperty Name="ScheduleID" ColumnName="ScheduleID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="WorkDate" ColumnName="WorkDate" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
