@@ -7,6 +7,9 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
+using Microsoft.Win32;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.Diagnostics;
 using UPMurtazinIS121.Model;
 using UPMurtazinIS121.Validations;
 
@@ -49,6 +52,7 @@ namespace UPMurtazinIS121.ViewModel
         public ICommand SaveCommand { get; }
         public ICommand AddNewCommand { get; }
         public ICommand DeleteCommand { get; }
+        public ICommand ExportToExcelCommand { get; }
 
         public IngredientsViewModel()
         {
@@ -59,6 +63,7 @@ namespace UPMurtazinIS121.ViewModel
             SaveCommand = new RelayCommand(SaveChanges);
             AddNewCommand = new RelayCommand(AddNewIngredient);
             DeleteCommand = new RelayCommand(DeleteIngredient);
+            ExportToExcelCommand = new RelayCommand(_ => ExportToExcel());
 
             SortAscCommand = new RelayCommand(_ => SortIngredients(true));
             SortDescCommand = new RelayCommand(_ => SortIngredients(false));
@@ -193,11 +198,66 @@ namespace UPMurtazinIS121.ViewModel
             foreach (var s in sorted)
                 FilteredIngredientsList.Add(s);
         }
+        private void ExportToExcel()
+        {
+            try
+            {
+                var dlg = new SaveFileDialog
+                {
+                    Filter = "Excel Workbook|*.xlsx",
+                    FileName = "Ingredients.xlsx"
+                };
+                if (dlg.ShowDialog() != true)
+                    return;
+
+                string path = dlg.FileName;
+
+                // Запускаем Excel
+                var excelApp = new Excel.Application
+                {
+                    Visible = true
+                };
+                var workbook = excelApp.Workbooks.Add();
+                var sheet = (Excel._Worksheet)workbook.Sheets[1];
+
+                // Заголовки столбцов
+                sheet.Cells[1, 1] = "Название";
+                sheet.Cells[1, 2] = "Тип";
+                sheet.Cells[1, 3] = "Ед. измерения";
+                sheet.Cells[1, 4] = "В наличии";
+                sheet.Cells[1, 5] = "Мин. кол-во";
+                sheet.Cells[1, 6] = "Цена за ед.";
+                sheet.Cells[1, 7] = "Мин. партия";
+
+                for (int i = 0; i < FilteredIngredientsList.Count; i++)
+                {
+                    var ing = FilteredIngredientsList[i];
+                    int row = i + 2;
+                    sheet.Cells[row, 1] = ing.IngredientsName;
+                    sheet.Cells[row, 2] = ing.TypeIngredients;
+                    sheet.Cells[row, 3] = ing.UnitOfMeasurement;
+                    sheet.Cells[row, 4] = ing.KolichSklad;
+                    sheet.Cells[row, 5] = ing.MinimKolich;
+                    sheet.Cells[row, 6] = ing.CostForOne;
+                    sheet.Cells[row, 7] = ing.MinOrderCost;
+                }
+
+                workbook.SaveAs(path);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Не удалось экспортировать в Excel: {ex.Message}",
+                                "Ошибка экспорта",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        
     }
 }

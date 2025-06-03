@@ -8,7 +8,7 @@
         xmlns:vm="clr-namespace:UPMurtazinIS121.ViewModel"
         mc:Ignorable="d"
         Title="Управление поставщиками - Амброзия Богов" 
-        Height="800" Width="1200"
+        MinHeight="800" MinWidth="1300"
         WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <vm:SuppliersViewModel/>

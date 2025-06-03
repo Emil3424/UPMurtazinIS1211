@@ -8,7 +8,7 @@
         xmlns:localll="clr-namespace:UPMurtazinIS121.Validations"
         mc:Ignorable="d"
         Title="Учет ингредиентов - Амброзия Богов" 
-        Height="800" Width="1200"
+        MinHeight="800" MinWidth="1300"
         WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <locall:IngredientsViewModel/>
@@ -61,8 +61,10 @@
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
-                        <Button Content="А-Я" Command="{Binding SortAscCommand}" Width="60" Margin="0,0,5,0"/>
-                        <Button Content="Я-А" Command="{Binding SortDescCommand}" Width="60"/>
+                        <Button Content="А-Я" Command="{Binding SortAscCommand}" Width="60" Margin="20,0,5,0"
+                                Background="#5D4037" Foreground="White"/>
+                        <Button Content="Я-А" Command="{Binding SortDescCommand}" Width="60" Margin="5,0,5,0"
+                                Background="#5D4037" Foreground="White"/>
                     </StackPanel>
 
                     <ListView Grid.Row="1"
@@ -210,6 +212,13 @@
                                 Margin="10,0,0,0"
                                 Padding="20,10"
                                 MinWidth="180"/>
+                        <Button Command="{Binding ExportToExcelCommand}"
+                                ToolTip="Экспорт в Excel"
+                                Margin="10,0,0,0"
+                                Padding="20,10"
+                                Height="48">
+                            <Image Source="/Microsoft_Office_Excel_.png"/>
+                        </Button>
                     </StackPanel>
                 </StackPanel>
             </Border>
