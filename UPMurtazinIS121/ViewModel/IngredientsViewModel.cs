@@ -152,9 +152,9 @@ namespace UPMurtazinIS121.ViewModel
                 CostForOne = 0,
                 ExpirationDate = DateTime.Now.AddMonths(6)
             };
-
             var wrapper = new IngredientModel(newIngredient);
             IngredientsList.Add(wrapper);
+            ApplyFilter(); // <---- Добавить
             SelectedIngredient = wrapper;
             _context.Ingredients.Add(newIngredient);
         }
@@ -162,19 +162,17 @@ namespace UPMurtazinIS121.ViewModel
         private void DeleteIngredient(object parameter)
         {
             if (SelectedIngredient == null) return;
-
             if (MessageBox.Show($"Удалить {SelectedIngredient.IngredientsName}?",
                 "Подтверждение",
                 MessageBoxButton.YesNo,
                 MessageBoxImage.Question) != MessageBoxResult.Yes) return;
-
             try
             {
                 var model = SelectedIngredient.GetModel();
                 _context.Ingredients.Remove(model);
-                IngredientsList.Remove(SelectedIngredient);
+                IngredientsList.Remove(SelectedIngredient); // Удаляем из основной коллекции
+                ApplyFilter(); // <---- Добавить
                 _context.SaveChanges();
-
                 SelectedIngredient = IngredientsList.FirstOrDefault();
             }
             catch (Exception ex)
