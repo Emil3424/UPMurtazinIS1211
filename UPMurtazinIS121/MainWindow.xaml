@@ -7,7 +7,7 @@
         xmlns:locall="clr-namespace:UPMurtazinIS121.ViewModel"
         xmlns:localll="clr-namespace:UPMurtazinIS121.Validations"
         mc:Ignorable="d"
-        Title="Учет ингредиентов - Кофейный Рай" 
+        Title="Учет ингредиентов - Амброзия Богов" 
         Height="800" Width="1200"
         WindowStartupLocation="CenterScreen">
     <Window.DataContext>
@@ -218,7 +218,7 @@
         <StatusBar VerticalAlignment="Bottom" Background="{StaticResource AccentBrush}">
             
             <StatusBarItem>
-                <TextBlock Text="Кофейный Рай © 2025" Foreground="{StaticResource LightTextBrush}"/>
+                <TextBlock Text="Амброзия Богов © 2025" Foreground="{StaticResource LightTextBrush}"/>
             </StatusBarItem>
             
             <StatusBarItem HorizontalAlignment="Center">

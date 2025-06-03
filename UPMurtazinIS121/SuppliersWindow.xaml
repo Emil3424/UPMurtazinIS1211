@@ -7,7 +7,7 @@
         xmlns:locall="clr-namespace:UPMurtazinIS121.Validations"
         xmlns:vm="clr-namespace:UPMurtazinIS121.ViewModel"
         mc:Ignorable="d"
-        Title="Управление поставщиками - Кофейный Рай" 
+        Title="Управление поставщиками - Амброзия Богов" 
         Height="800" Width="1200"
         WindowStartupLocation="CenterScreen">
     <Window.DataContext>
@@ -15,12 +15,18 @@
     </Window.DataContext>
 
     <Grid Margin="10">
-        <TextBlock Text="УПРАВЛЕНИЕ ПОСТАВЩИКАМИ" 
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="50" VerticalAlignment="Top">
+            <Image Source="/logo_coffee_paradise.png"
+                   Width="50"
+                   Height="50"
+                   VerticalAlignment="Top"/>
+            <TextBlock Text="УПРАВЛЕНИЕ ПОСТАВЩИКАМИ" 
                    FontSize="24" FontWeight="Bold" 
-                   Foreground="{StaticResource AccentBrush}"
-                   HorizontalAlignment="Center" 
-                   VerticalAlignment="Top"
-                   Margin="0,10"/>
+                       Foreground="{StaticResource AccentBrush}"
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Top"
+                       Margin="25,10"/>
+        </StackPanel>
 
         <Grid Margin="0,50,0,50">
             <Grid.ColumnDefinitions>
@@ -203,7 +209,7 @@
 
         <StatusBar VerticalAlignment="Bottom" Background="{StaticResource AccentBrush}">
             <StatusBarItem>
-                <TextBlock Text="Кофейный Рай © 2025" Foreground="{StaticResource LightTextBrush}"
+                <TextBlock Text="Амброзия Богов © 2025" Foreground="{StaticResource LightTextBrush}"
                     Margin="10"
                     Padding="10,5"/>
             </StatusBarItem>
