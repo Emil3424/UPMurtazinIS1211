@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
@@ -7,11 +8,9 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
-using Microsoft.Win32;
-using Excel = Microsoft.Office.Interop.Excel;
-using System.Diagnostics;
 using UPMurtazinIS121.Model;
 using UPMurtazinIS121.Validations;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace UPMurtazinIS121.ViewModel
 {
@@ -258,6 +257,6 @@ namespace UPMurtazinIS121.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        
+
     }
 }

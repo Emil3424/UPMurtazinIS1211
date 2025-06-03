@@ -217,7 +217,7 @@
                                 Margin="10,0,0,0"
                                 Padding="20,10"
                                 Height="48">
-                            <Image Source="/Microsoft_Office_Excel_.png"/>
+                            <Image Source="/Resources/Microsoft_Office_Excel_.png"/>
                         </Button>
                     </StackPanel>
                 </StackPanel>

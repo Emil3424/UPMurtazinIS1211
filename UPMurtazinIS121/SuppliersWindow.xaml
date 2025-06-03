@@ -16,7 +16,7 @@
 
     <Grid Margin="10">
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="50" VerticalAlignment="Top">
-            <Image Source="/logo_coffee_paradise.png"
+            <Image Source="/Resources/logo_coffee_paradise.png"
                    Width="50"
                    Height="50"
                    VerticalAlignment="Top"/>

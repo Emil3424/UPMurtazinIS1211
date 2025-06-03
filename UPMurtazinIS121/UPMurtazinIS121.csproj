@@ -15,6 +15,22 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\Emil\Desktop\Мусор МДК\МДК 01.03\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,7 +52,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>coffee_icon.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\coffee_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>732C4A98631CDD6257867D0515CF5E561A14FE24</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>UPMurtazinIS121_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -63,7 +91,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BoolToBrushConverter.cs" />
     <Compile Include="Model\Employees.cs">
       <DependentUpon>Model9.tt</DependentUpon>
     </Compile>
@@ -186,7 +213,8 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model9.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ClassDiagram1.cd" />
+    <None Include="Model\ClassDiagram1.cd" />
+    <None Include="Model\ClassDiagram2.cd" />
     <None Include="Model\Model9.edmx.diagram">
       <DependentUpon>Model9.edmx</DependentUpon>
     </None>
@@ -202,8 +230,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="coffee_icon.ico" />
-    <Resource Include="logo_coffee_paradise.png" />
+    <Resource Include="Resources\coffee_icon.ico" />
+    <Resource Include="Resources\logo_coffee_paradise.png" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="EntityFramework">
@@ -214,7 +242,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Microsoft_Office_Excel_.png" />
+    <Resource Include="Resources\Microsoft_Office_Excel_.png" />
     <Content Include="Model\Model9.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model9.edmx</DependentUpon>
@@ -225,7 +253,18 @@
       <DependentUpon>Model9.edmx</DependentUpon>
       <LastGenOutput>Model9.cs</LastGenOutput>
     </Content>
-    <Content Include="SQLScript.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
